@@ -3,7 +3,6 @@ import java.io.IOException;
 
 public class Installer {
     private final String initialFolderPath;
-
     public Installer(String initialFolderPath) {
         this.initialFolderPath = initialFolderPath;
     }

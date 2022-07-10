@@ -5,33 +5,30 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-//        installGame();
-//        saveGame();
-
-        loadGame();
+        String gameFolderPath = "C://Work//Netology//Games";
+        installGame(gameFolderPath);
+        saveGame(gameFolderPath);
+        loadGame(gameFolderPath);
     }
 
-    private static void loadGame() {
-        List<GameProgress> loadedGameProgresses = GameLoader.loadGame("C://Work//Netology//Games");
+    private static void loadGame(String gameFolderPath) {
+        List<GameProgress> loadedGameProgresses = GameLoader.loadGame(gameFolderPath);
         for(GameProgress gameProgress: loadedGameProgresses) {
             System.out.println(gameProgress);
         }
     }
 
-    private static void saveGame() {
-        GameProgress gameProgress1 = new GameProgress(100, 2, 3, 12.0);
-        GameProgress gameProgress2 = new GameProgress(90, 2, 1, 1.0);
-        GameProgress gameProgress3 = new GameProgress(75, 2, 6, 163.0);
+    private static void saveGame(String gameFolderPath) {
         List<GameProgress> gameProgresses = new ArrayList<>();
-        gameProgresses.add(gameProgress1);
-        gameProgresses.add(gameProgress2);
-        gameProgresses.add(gameProgress3);
+        gameProgresses.add(new GameProgress(100, 2, 3, 12.0));
+        gameProgresses.add(new GameProgress(90, 2, 1, 1.0));
+        gameProgresses.add(new GameProgress(75, 2, 6, 163.0));
 
-        GameSaver.saveGame("C://Work//Netology//Games", gameProgresses);
+        GameSaver.saveGame(gameFolderPath, gameProgresses);
     }
 
-    private static void installGame() {
-        Installer installer = new Installer("C://Work//Netology//Games");
+    private static void installGame(String gameFolderPath) {
+        Installer installer = new Installer(gameFolderPath);
         StringBuilder str = new StringBuilder();
         str.append("Installation result\n");
         str.append(installer.createNewFolder("", "src"));
@@ -47,7 +44,7 @@ public class Main {
         str.append(installer.createNewFolder("res//", "icons"));
         str.append(installer.createNewFile("temp//", "temp.txt"));
 
-        writeTextToFile("C://Work//Netology//Games//temp//temp.txt", str.toString());
+        writeTextToFile( gameFolderPath + "//temp//temp.txt", str.toString());
     }
 
     private static void writeTextToFile(String s, String text) {

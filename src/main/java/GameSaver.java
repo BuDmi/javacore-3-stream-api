@@ -29,7 +29,7 @@ public class GameSaver {
         try (ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(archivePath))) {
             for (int i = 0; i < filesToZip.size(); i++) {
                 try (FileInputStream fis = new FileInputStream(filesToZip.get(i))) {
-                    ZipEntry entry = new ZipEntry("save" + (i + 1) + ".txt");
+                    ZipEntry entry = new ZipEntry("save" + (i + 1) + ".dat");
                     zout.putNextEntry(entry);
                     byte[] buffer = new byte[fis.available()];
                     fis.read(buffer);
