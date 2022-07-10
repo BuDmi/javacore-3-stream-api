@@ -5,6 +5,23 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
+        installGame();
+        saveGame();
+    }
+
+    private static void saveGame() {
+        GameProgress gameProgress1 = new GameProgress(100, 2, 3, 12.0);
+        GameProgress gameProgress2 = new GameProgress(90, 2, 1, 1.0);
+        GameProgress gameProgress3 = new GameProgress(75, 2, 6, 163.0);
+        List<GameProgress> gameProgresses = new ArrayList<>();
+        gameProgresses.add(gameProgress1);
+        gameProgresses.add(gameProgress2);
+        gameProgresses.add(gameProgress3);
+
+        GameSaver.saveGame("C://Work//Netology//Games//savegames", gameProgresses);
+    }
+
+    private static void installGame() {
         Installer installer = new Installer("C://Work//Netology//Games");
         StringBuilder str = new StringBuilder();
         str.append("Installation result\n");
