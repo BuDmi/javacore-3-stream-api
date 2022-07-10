@@ -8,11 +8,11 @@ public class GameSaver {
     public static void saveGame(String folderPath, List<GameProgress> listOfGameProgress) {
         List<String> filesToZip = new ArrayList<>();
         for (int i = 0; i < listOfGameProgress.size(); i++) {
-            String filePath = folderPath + "//save" + (i + 1) + ".dat";
+            String filePath = folderPath + "//savegames//save" + (i + 1) + ".dat";
             saveGameStatusToFile(filePath, listOfGameProgress.get(i));
             filesToZip.add(filePath);
         }
-        zipGameStatus(folderPath + "//zip.zip", filesToZip);
+        zipGameStatus(folderPath + "//savegames//zip.zip", filesToZip);
         deleteFiles(filesToZip);
     }
 

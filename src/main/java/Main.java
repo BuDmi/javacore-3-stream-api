@@ -5,8 +5,17 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        installGame();
-        saveGame();
+//        installGame();
+//        saveGame();
+
+        loadGame();
+    }
+
+    private static void loadGame() {
+        List<GameProgress> loadedGameProgresses = GameLoader.loadGame("C://Work//Netology//Games");
+        for(GameProgress gameProgress: loadedGameProgresses) {
+            System.out.println(gameProgress);
+        }
     }
 
     private static void saveGame() {
@@ -18,7 +27,7 @@ public class Main {
         gameProgresses.add(gameProgress2);
         gameProgresses.add(gameProgress3);
 
-        GameSaver.saveGame("C://Work//Netology//Games//savegames", gameProgresses);
+        GameSaver.saveGame("C://Work//Netology//Games", gameProgresses);
     }
 
     private static void installGame() {
